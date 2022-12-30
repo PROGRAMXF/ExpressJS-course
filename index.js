@@ -1,6 +1,20 @@
-const { request, response } = require('express');
+
 const express = require('express'); //instanciamos express luego de instalarlo
 const app = express();
+
+//middlewares
+app.use(
+    function (request, response, next){
+        console.log('request url:' + request.url);
+        next();
+    }
+);
+
+app.use((request, response, next) =>   {
+        console.log('Ah pasado por esta función');
+        next();
+    }
+);
 
 //rutas:
 app.get('/', (requeste, response) =>{
