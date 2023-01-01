@@ -3,6 +3,12 @@ const express = require('express'); //instanciamos express luego de instalarlo
 const morgan = require('morgan');
 const app = express();
 
+
+//settings - me permiten agregar variables
+app.set('appName', 'Mi primer server');
+
+
+
 //middlewares
 app.use(morgan('combined'));//Morgan es un paquete de logging para Node. js. Jest es un framework de testing lanzado por primera vez en 2014
 
@@ -41,5 +47,6 @@ app.get('*', (request, response)=>{
 })
 
 app.listen(3000, function(){
-    console.log('servidor funcionando')
+    console.log('servidor funcionando');
+    console.log('Nombre de la app: ', app.get('appName'));
 });
