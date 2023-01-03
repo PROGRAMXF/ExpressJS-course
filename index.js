@@ -6,7 +6,9 @@ const app = express();
 
 //settings - me permiten agregar variables
 app.set('appName', 'Mi primer server');
+app.set('views', __dirname + '/views'); //carpeta donde colocamos las vistas
 
+app.set('view engine', 'ejs'); //ejs motor de plantillas y me sirve para reutilizar codigo
 
 
 //middlewares
@@ -26,17 +28,17 @@ app.use((request, response, next) =>   {
 );
 */
 //rutas:
-app.get('/', (requeste, response) =>{
+app.get('/', (request, response) =>{
 
-    response.end('Hola Fer'); 
+    response.render('index.ejs'); 
 
-})
+});
 
 //vamos a agregar la ruta para el login:
 
 app.get('/login', (request, response) => {
 
-    response.end('aqui va el login');
+    response.render('login');
 
 });
 
